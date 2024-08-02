@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import "./App.css";
+
+type Thread = {
+  id: string;
+  title: string;
+};
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const [threads, setThreads] = useState<Thread[]>([]);
+
+  useEffect(() => {
+    const getAllThreads = async () => {
+      const res = await fetch(
+        "https://railway.bulletinboard.techtrain.dev/threads"
+      );
+
+      if (!res.ok) {
+        throw new Error("Failed to fetch data");
+      }
+      console.log(res);
+      const data = await res.json();
+      console.log(data);
+      setThreads(data);
+    };
+    getAllThreads();
+  }, []);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h2>新着スレッド</h2>
+      <ul className="container">
+        {threads.map((thread) => (
+          <li key={thread.id} className="item">
+            {thread.title}
+          </li>
+        ))}
+      </ul>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
