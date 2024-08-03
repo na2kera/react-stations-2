@@ -1,4 +1,5 @@
 import { FormEvent, useState } from "react";
+import "./App.css";
 
 const CreateThread = () => {
   const [text, setText] = useState("");
@@ -25,6 +26,12 @@ const CreateThread = () => {
 
   return (
     <>
+      <header className="header">
+        <div className="headerContainer">
+          <h3 className="title">掲示板</h3>
+          <a href="/threads/new">スレッドをたてる</a>
+        </div>
+      </header>
       <h2>スレッド新規作成</h2>
       <form onSubmit={sendData}>
         <input
@@ -34,10 +41,13 @@ const CreateThread = () => {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <input type="submit" value="送信" />
+        <div className="buttonList">
+          <a href="/" className="backLink">
+            Topに戻る
+          </a>
+          <input type="submit" value="送信" className="submitButton" />
+        </div>
       </form>
-      <p>{text}</p>
-      <a href="/">Topに戻る</a>
     </>
   );
 };

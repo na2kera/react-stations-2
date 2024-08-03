@@ -75,3 +75,20 @@
 .read-the-docs {
   color: #888;
 }
+
+.buttonList {
+  margin-top: 2rem;
+}
+
+.backLink {
+  margin-right: 1rem;
+}
+
+.submitButton {
+  margin-left: 1rem;
+  background-color: #66d58a;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+}

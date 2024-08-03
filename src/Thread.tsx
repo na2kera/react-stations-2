@@ -1,5 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import "./App.css";
 
 type Post = {
   id: string;
@@ -52,6 +53,12 @@ const Thread = () => {
 
   return (
     <>
+      <header className="header">
+        <div className="headerContainer">
+          <h3 className="title">掲示板</h3>
+          <a href="/threads/new">スレッドをたてる</a>
+        </div>
+      </header>
       <form onSubmit={sendPost}>
         <textarea
           name="post"
