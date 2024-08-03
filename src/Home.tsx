@@ -35,7 +35,7 @@ const Home = () => {
       <ul className="container">
         {threads.map((thread) => (
           <li key={thread.id} className="item">
-            {thread.title}
+            <a href={`/thread/${thread.id}`}>{thread.title} </a>
           </li>
         ))}
       </ul>
