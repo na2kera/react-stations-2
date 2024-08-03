@@ -59,23 +59,30 @@ const Thread = () => {
           <a href="/threads/new">スレッドをたてる</a>
         </div>
       </header>
-      <form onSubmit={sendPost}>
-        <textarea
-          name="post"
-          id="post"
-          value={post}
-          onChange={(e) => {
-            setPost(e.target.value);
-          }}
-        ></textarea>
-        <p>{post}</p>
-        <input type="submit" value="送信" />
-      </form>
-      <ul>
-        {Object.values(postsData).map((postData: Post) => (
-          <li key={postData.id}>{postData.post}</li>
-        ))}
-      </ul>
+      <div className="threadContainer">
+        <div>
+          <ul className="commentList">
+            {Object.values(postsData).map((postData: Post) => (
+              <li key={postData.id} className="comment">
+                {postData.post}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <form onSubmit={sendPost} className="postForm">
+          <textarea
+            name="post"
+            id="post"
+            className="textarea"
+            value={post}
+            onChange={(e) => {
+              setPost(e.target.value);
+            }}
+          ></textarea>
+          <p>{post}</p>
+          <input type="submit" value="送信" className="submitButton" />
+        </form>
+      </div>
     </>
   );
 };
