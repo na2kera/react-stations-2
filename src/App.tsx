@@ -1,42 +1,14 @@
-import { useEffect, useState } from "react";
-import "./App.css";
-
-type Thread = {
-  id: string;
-  title: string;
-};
+import { Route, Routes } from "react-router-dom";
+import Home from "./Home";
+import CreateThread from "./CreateThread";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [threads, setThreads] = useState<Thread[]>([]);
-
-  useEffect(() => {
-    const getAllThreads = async () => {
-      const res = await fetch(
-        "https://railway.bulletinboard.techtrain.dev/threads"
-      );
-
-      if (!res.ok) {
-        throw new Error("Failed to fetch data");
-      }
-      console.log(res);
-      const data = await res.json();
-      console.log(data);
-      setThreads(data);
-    };
-    getAllThreads();
-  }, []);
-
   return (
     <>
-      <h2>新着スレッド</h2>
-      <ul className="container">
-        {threads.map((thread) => (
-          <li key={thread.id} className="item">
-            {thread.title}
-          </li>
-        ))}
-      </ul>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/threads/new" element={<CreateThread />} />
+      </Routes>
     </>
   );
 }
