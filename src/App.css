@@ -18,6 +18,30 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+.header {
+  background-color: #66d58a;
+  width: 100%;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.title {
+  color: white;
+}
+
 .container {
   padding-left: 0;
 }

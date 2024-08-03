@@ -29,7 +29,10 @@ const Home = () => {
   return (
     <>
       <header className="header">
-        <a href="/threads/new">スレッドをたてる</a>
+        <div className="headerContainer">
+          <h3 className="title">掲示板</h3>
+          <a href="/threads/new">スレッドをたてる</a>
+        </div>
       </header>
       <h2>新着スレッド</h2>
       <ul className="container">
